@@ -1,8 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
 import ChangeText from "./components/change-text.mjs";
 import SetItemState from "./components/set-state";
 import SetArray from "./components/array-test";
+import AddName from "./components/add-name";
 
 function App() {
     return (
@@ -11,6 +11,7 @@ function App() {
                 <ChangeText />
                 <SetItemState />
                 <SetArray />
+                <AddName />
             </header>
         </div>
     );

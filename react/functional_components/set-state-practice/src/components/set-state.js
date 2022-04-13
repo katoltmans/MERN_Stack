@@ -22,7 +22,7 @@ const SetItemState = (props) => {
                 <span>{item},</span>
             ))}{" "}
             price={state.totalPrice.toFixed(2)}
-            <button onClick={handleClick}>Click To Update Items</button>
+            <button onClick={handleClick}>Click To Update Items & Price</button>
         </div>
     );
 };

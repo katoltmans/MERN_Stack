@@ -15,7 +15,7 @@ const SetArray = (props) => {
     return (
         <div>
             array={arr}
-            <button onClick={handleClick}>Click To Update Items</button>
+            <button onClick={handleClick}>Click To Display Array</button>
         </div>
     );
 };
