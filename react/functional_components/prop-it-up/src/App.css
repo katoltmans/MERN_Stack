@@ -13,7 +13,7 @@
     }
 }
 
-.App-header {
+.App {
     background-color: mintcream;
     min-height: 100vh;
     display: flex;
@@ -21,11 +21,16 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: slategray;
 }
 
 .App-link {
     color: #61dafb;
+}
+button {
+    background-color: rgb(189, 189, 247);
+    padding: 5px;
+    border-radius: 5px;
 }
 
 @keyframes App-logo-spin {
