@@ -27,3 +27,8 @@
 input {
     margin-left: 10px;
 }
+
+.error {
+    color: red;
+    font-size: 80%;
+}
