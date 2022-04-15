@@ -21,11 +21,6 @@ const Form = (props) => {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
-    };
-
-    const handleSubmit = (e) => {
-        //prevent data from being lost on page load
-        e.preventDefault();
         //general message if data is missing from the form
         if (firstName && lastName && email && password && confirmPassword) {
             console.log("Form Submitted");
@@ -88,7 +83,7 @@ const Form = (props) => {
                 </div>
                 <div>
                     <div className="error">
-                        {password && password.length < 5 && (
+                        {password && password.length < 8 && (
                             <p>Password must be at least 8 characters</p>
                         )}
                     </div>
@@ -102,15 +97,27 @@ const Form = (props) => {
                         />
                     </div>
                 </div>
-
-                <div className="inputField">
-                    <label>Confirm Password: </label>
-                    <input
-                        type="text"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
+                <div>
+                    <div className="error">
+                        {confirmPassword && confirmPassword.length < 8 && (
+                            <p>Password must be at least 8 characters</p>
+                        )}
+                    </div>
+                    <div className="error">
+                        {confirmPassword && confirmPassword !== password && (
+                            <p>Passwords must match</p>
+                        )}
+                    </div>
+                    <div className="inputField">
+                        <label>Confirm Password: </label>
+                        <input
+                            type="text"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                    </div>
                 </div>
+
                 <input type="submit" value="submit"></input>
                 <h5>Your Form Data:</h5>
                 <p>First Name: {firstName}</p>
