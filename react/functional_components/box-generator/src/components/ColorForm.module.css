@@ -1,0 +1,13 @@
+* {
+    font-family: sans-serif;
+    background-color: whitesmoke;
+    color: darkslategray;
+}
+
+.colorInput {
+    width: 500px;
+}
+
+.colorInput * {
+    display: inline-block;
+}
