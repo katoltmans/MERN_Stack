@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Col from "react-bootstrap/Col";
-import styles from "./ColorList.module.css";
 
 const ColorList = (props) => {
     const { colors } = props;
@@ -10,15 +8,15 @@ const ColorList = (props) => {
     return (
         <>
             {colors.map((color, index) => (
-                <Col
+                <div
                     key={index}
-                    className="mb-4"
                     style={{
                         backgroundColor: color,
-                        height: 100,
-                        width: 100,
+                        margin: "10px",
+                        height: "100px",
+                        width: "100px",
                     }}
-                ></Col>
+                ></div>
             ))}
         </>
     );
