@@ -17,7 +17,7 @@ function App() {
         {
             id: 3,
             name: "Cobra Kai",
-            info: "Cobra Kai is a creation of John Kreese when he returned from the Vietnam war. It trains fighters with the mentality to spare no mercy.",
+            info: "Cobra Kai is a creation of John Kreese when he returned from the Vietnam war. This dojo trains fighters with the mentality to spare no mercy.",
         },
     ];
     return (

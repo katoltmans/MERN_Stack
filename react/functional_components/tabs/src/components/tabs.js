@@ -3,8 +3,7 @@ import React, { useState } from "react";
 const Tabs = (props) => {
     const { tabInfo } = props;
     console.log("TAB INFO: ", tabInfo);
-    //const { name, info } = tabInfo;
-    const [createTab, setCreateTab] = useState("");
+    const [tabId, setTabId] = useState("");
 
     const handleClick = () => {
         console.log("tab clicked");
