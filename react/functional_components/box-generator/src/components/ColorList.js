@@ -8,13 +8,19 @@ const ColorList = (props) => {
     //const { colorName } = color;
 
     return (
-        <div>
+        <>
             {colors.map((color, index) => (
-                <Col key={index} className="mb-4">
-                    <div>{color}</div>
-                </Col>
+                <Col
+                    key={index}
+                    className="mb-4"
+                    style={{
+                        backgroundColor: color,
+                        height: 100,
+                        width: 100,
+                    }}
+                ></Col>
             ))}
-        </div>
+        </>
     );
 };
 
