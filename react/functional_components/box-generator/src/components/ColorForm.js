@@ -5,12 +5,13 @@ import Button from "react-bootstrap/button";
 
 const ColorForm = (props) => {
     //const [colors, setColors] = props;
+    const [colors, setColors] = useState([]);
     const [colorName, setColorName] = useState("");
     const [error, setError] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        /*if (colorName) {
+        if (colorName) {
             console.log("color submitted", colorName);
 
             colors.push(colorName);
@@ -20,7 +21,8 @@ const ColorForm = (props) => {
         // Create an array to hold input colors
         //setColors([...colors, colorName]);
         e.target.reset();
-        setColors(colors);*/
+        setColors(colors);
+        console.log("COLORS: ", colors);
     };
 
     return (

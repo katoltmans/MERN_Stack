@@ -13,7 +13,7 @@ function App() {
         <>
             <Container>
                 <Row className="input">
-                    <ColorForm colors={colors} setColors={setColors} />
+                    <ColorForm />
                 </Row>
                 <Row>
                     {colors.map((color) => {
