@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import ColorForm from "./components/ColorForm.js";
-import Color from "./components/ColorList.js";
+import ColorList from "./components/ColorList.js";
 import { useState } from "react";
 
 function App() {
@@ -13,18 +13,10 @@ function App() {
         <>
             <Container>
                 <Row className="input">
-                    <ColorForm />
+                    <ColorForm colors={colors} setColors={setColors} />
                 </Row>
                 <Row>
-                    {colors.map((color) => {
-                        return (
-                            <Color
-                                color={color}
-                                colors={colors}
-                                setColors={setColors}
-                            />
-                        );
-                    })}
+                    <ColorList colors={colors} />
                 </Row>
             </Container>
         </>

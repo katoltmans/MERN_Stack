@@ -4,8 +4,8 @@ import Button from "react-bootstrap/button";
 //import styles from "./ColorForm.module.css";
 
 const ColorForm = (props) => {
-    //const [colors, setColors] = props;
-    const [colors, setColors] = useState([]);
+    const { colors, setColors } = props;
+    //const [colors, setColors] = useState([]);
     const [colorName, setColorName] = useState("");
     const [error, setError] = useState("");
 
@@ -13,16 +13,12 @@ const ColorForm = (props) => {
         e.preventDefault();
         if (colorName) {
             console.log("color submitted", colorName);
-
-            colors.push(colorName);
+            setColors([...colors, colorName]);
+            e.target.reset();
         } else {
             setError("Please input a color");
         }
         // Create an array to hold input colors
-        //setColors([...colors, colorName]);
-        e.target.reset();
-        setColors(colors);
-        console.log("COLORS: ", colors);
     };
 
     return (
