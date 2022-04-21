@@ -3,7 +3,7 @@ import "./App.css";
 import Tabs from "./components/tabs.js";
 
 function App() {
-    const tabInfos = [
+    const tabInfo = [
         {
             id: 1,
             name: "Miyagi-Do",
@@ -22,9 +22,7 @@ function App() {
     ];
     return (
         <div className="App">
-            {tabInfos.map((tabInfo) => {
-                return <Tabs key={tabInfo.id} tabInfo={tabInfo} />;
-            })}
+            <Tabs tabInfo={tabInfo} />
         </div>
     );
 }

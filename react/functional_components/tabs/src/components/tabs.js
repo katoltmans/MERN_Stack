@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const Tabs = (props) => {
     const { tabInfo } = props;
     console.log("TAB INFO: ", tabInfo);
-    const { name, info } = tabInfo;
-    const [createTab, setCreateTab] = useState(name);
+    //const { name, info } = tabInfo;
+    const [createTab, setCreateTab] = useState("");
 
     const handleClick = () => {
         console.log("tab clicked");
@@ -12,8 +12,16 @@ const Tabs = (props) => {
 
     return (
         <>
-            <div className="tabNames">{name}</div>
-            <div className="tabBlurbs">{info}</div>
+            <div className="tabNames">
+                {tabInfo.map((tab) => (
+                    <div key={tab.id}>{tab.name}</div>
+                ))}
+            </div>
+            <div className="tabBlurbs">
+                {tabInfo.map((tab) => (
+                    <div key={tab.id}>{tab.info}</div>
+                ))}
+            </div>
         </>
     );
 };
