@@ -5,16 +5,11 @@ import styles from "./ColorList.module.css";
 const Color = (props) => {
     const { color, colors, setColors } = props;
     console.log("COLOR: ", color);
-    const { colorName } = color;
-    const handleClick = () => {
-        console.log("clicked");
-        const updatedColors = colors.map((c) => {
-            colors.push(colorName);
-        });
-    };
+    //const { colorName } = color;
+
     return (
         <Col className="mb-4">
-            <div>Color</div>
+            <div>{color}</div>
         </Col>
     );
 };

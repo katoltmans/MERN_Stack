@@ -1,36 +1,32 @@
 import React, { useState } from "react";
-import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/button";
-import styles from "./ColorForm.module.css";
-import { v4 } from "uuid";
+//import styles from "./ColorForm.module.css";
 
-const ChangeColor = (props) => {
-    const [colors, setColors] = props;
+const ColorForm = (props) => {
+    //const [colors, setColors] = props;
     const [colorName, setColorName] = useState("");
     const [error, setError] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (colorName) {
-            console.log("color submitted", colorName, v4());
+        /*if (colorName) {
+            console.log("color submitted", colorName);
 
-            const colorName = {
-                colorName: colorName,
-            };
+            colors.push(colorName);
         } else {
             setError("Please input a color");
         }
         // Create an array to hold input colors
-        setColors([...colors, colorName]);
+        //setColors([...colors, colorName]);
         e.target.reset();
-        setColorName("");
+        setColors(colors);*/
     };
 
     return (
         <>
             {error && <p className="error">{error}</p>}
-            <form>
+            <Form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="colorName"
@@ -40,9 +36,9 @@ const ChangeColor = (props) => {
                     }}
                 />
                 <Button type="submit">Add</Button>
-            </form>
+            </Form>
         </>
     );
 };
 
-export default ChangeColor;
+export default ColorForm;

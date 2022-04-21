@@ -3,7 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import ChangeColor from "./components/ColorForm.js";
+import ColorForm from "./components/ColorForm.js";
 import Color from "./components/ColorList.js";
 import { useState } from "react";
 
@@ -13,7 +13,7 @@ function App() {
         <>
             <Container>
                 <Row className="input">
-                    <ChangeColor />
+                    <ColorForm colors={colors} setColors={setColors} />
                 </Row>
                 <Row>
                     {colors.map((color) => {
