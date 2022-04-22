@@ -1,5 +1,6 @@
 import "./App.css";
 import Todo from "./components/Todo.js";
+import background from "./img/marvel_phase_4.jpg";
 
 function App() {
     const todoItems = [
@@ -26,11 +27,15 @@ function App() {
     ];
 
     return (
-        <div className="App">
-            <h2>2022 Marvel Todos</h2>
-            {todoItems.map((item) => {
-                return <Todo key={todoItems.id} item={item} />;
-            })}
+        <div className="App" style={{ backgroundImage: `url(${background})` }}>
+            <div className="title">
+                <h2>Phase 4 Marvel Todos</h2>
+            </div>
+            <div className="list">
+                {todoItems.map((item) => {
+                    return <Todo key={todoItems.id} item={item} />;
+                })}
+            </div>
         </div>
     );
 }

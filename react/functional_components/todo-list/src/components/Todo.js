@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
+import styles from "./Todo.module.css";
 
 const Todo = (props) => {
     const { item } = props;
@@ -6,10 +7,16 @@ const Todo = (props) => {
     const { todo } = item;
     const [todoItem, setTodoItem] = useState(todo);
 
+    const handleClick = (e) => {
+        console.log("clicked");
+        e.target.style.textDecoration = "line-through";
+    };
+
     return (
-        <div className="listItem">
-            <ul>
-                <li>{todoItem}</li>
+        <div>
+            <ul className={styles.ul}>
+                <li className={styles.li}>{todoItem}</li>
+                <button onCLick={handleClick}>Seen!</button>
             </ul>
         </div>
     );
