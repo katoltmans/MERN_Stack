@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Tabs = (props) => {
     const { tabInfo } = props;
     console.log("TAB INFO: ", tabInfo);
-    const [tabId, setTabId] = useState("");
+    const [tabId, setTabId] = useState(1);
 
     const handleClick = (e, tabId) => {
         console.log("tab clicked");
@@ -15,12 +15,21 @@ const Tabs = (props) => {
         <>
             <div className="tabNames">
                 {tabInfo.map((tab) => (
-                    <div key={tab.id} onClick={(e) => handleClick(e, tab.id)}>
+                    <div
+                        key={tab.id}
+                        onClick={(e) => handleClick(e, tab.id)}
+                        style={{
+                            backgroundColor:
+                                tab.id === tabId
+                                    ? "mediumaquamarine"
+                                    : "cornflowerblue",
+                        }}
+                    >
                         {tab.name}
                     </div>
                 ))}
             </div>
-            <div className="tabBlurbs" key={tabId}>
+            <div className="tabBlurbs">
                 {tabInfo.info}
                 {tabInfo.map((tab) => (
                     <div
