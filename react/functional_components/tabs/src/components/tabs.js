@@ -5,20 +5,34 @@ const Tabs = (props) => {
     console.log("TAB INFO: ", tabInfo);
     const [tabId, setTabId] = useState("");
 
-    const handleClick = () => {
+    const handleClick = (e, tabId) => {
         console.log("tab clicked");
+        setTabId(tabId);
+        console.log("TAB ID NOW: ", tabId);
     };
 
     return (
         <>
             <div className="tabNames">
                 {tabInfo.map((tab) => (
-                    <div key={tab.id}>{tab.name}</div>
+                    <div key={tab.id} onClick={(e) => handleClick(e, tab.id)}>
+                        {tab.name}
+                    </div>
                 ))}
             </div>
-            <div className="tabBlurbs">
+            <div className="tabBlurbs" key={tabId}>
+                {tabInfo.info}
                 {tabInfo.map((tab) => (
-                    <div key={tab.id}>{tab.info}</div>
+                    <div
+                        key={tab.id}
+                        style={{
+                            visibility: tab.id === tabId ? "visible" : "hidden",
+                            zIndex: tab.id,
+                            position: "absolute",
+                        }}
+                    >
+                        {tab.info}
+                    </div>
                 ))}
             </div>
         </>
