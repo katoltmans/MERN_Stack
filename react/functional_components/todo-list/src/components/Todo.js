@@ -2,21 +2,41 @@ import React, { useState, Component } from "react";
 import styles from "./Todo.module.css";
 
 const Todo = (props) => {
-    const { item } = props;
+    const { item, todoItems, setTodoItems } = props;
     console.log("TODO ITEM: ", item);
-    const { todo } = item;
-    const [todoItem, setTodoItem] = useState(todo);
+    const { todo, seen } = item;
 
-    const handleClick = (e) => {
+    const handleClick = (e, listItem) => {
         console.log("clicked");
-        e.target.style.textDecoration = "line-through";
+
+        const updatedTodos = todoItems.map((ti) => {
+            if (item.id === ti.id) {
+                console.log(ti.seen);
+                ti.seen = !ti.seen;
+            }
+            return ti;
+        });
+        setTodoItems(updatedTodos);
     };
 
     return (
         <div>
             <ul className={styles.ul}>
-                <li className={styles.li}>{todoItem}</li>
-                <button onCLick={handleClick}>Seen!</button>
+                <li
+                    className={styles.li}
+                    style={{
+                        textDecoration: seen === true ? "line-through" : "none",
+                    }}
+                >
+                    {todo}
+                </li>
+                <label>
+                    <input
+                        type="checkbox"
+                        onClick={(e) => handleClick(e, item)}
+                    />
+                    Seen
+                </label>
             </ul>
         </div>
     );
