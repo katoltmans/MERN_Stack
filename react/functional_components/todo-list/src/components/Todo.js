@@ -9,12 +9,24 @@ const Todo = (props) => {
     const handleClick = (e, listItem) => {
         console.log("clicked");
 
+        //Strike through completed items
         const updatedTodos = todoItems.map((ti) => {
             if (item.id === ti.id) {
                 console.log(ti.seen);
                 ti.seen = !ti.seen;
             }
             return ti;
+        });
+        setTodoItems(updatedTodos);
+    };
+    //Delete todo items
+    const handleDelete = (e, listItem) => {
+        console.log("deleted");
+
+        const updatedTodos = todoItems.filter((ti) => {
+            if (item.id !== ti.id) {
+                return ti;
+            }
         });
         setTodoItems(updatedTodos);
     };
@@ -30,13 +42,19 @@ const Todo = (props) => {
                 >
                     {todo}
                 </li>
-                <label>
-                    <input
-                        type="checkbox"
-                        onClick={(e) => handleClick(e, item)}
-                    />
-                    Seen
-                </label>
+                <div className="flex">
+                    <label>
+                        <input
+                            className="checkbox"
+                            type="checkbox"
+                            onClick={(e) => handleClick(e, item)}
+                        />
+                        Seen
+                    </label>
+                    <button onClick={(e) => handleDelete(e, item)}>
+                        Delete Task
+                    </button>
+                </div>
             </ul>
         </div>
     );

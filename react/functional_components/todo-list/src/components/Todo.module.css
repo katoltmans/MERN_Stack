@@ -10,7 +10,7 @@ div {
 li {
     border: 1px aqua solid;
     border-radius: 5px;
-    width: 300px;
+    /*width: 300px;*/
     padding: 20px;
     background-color: powderblue;
     font-weight: bold;
@@ -25,4 +25,9 @@ button {
 
 label {
     color: white;
+    margin: 5px 10px;
+}
+
+.flex {
+    display: flex;
 }
