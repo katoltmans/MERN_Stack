@@ -1,5 +1,6 @@
 import "./App.css";
 import Todo from "./components/Todo.js";
+import TodoForm from "./components/Form";
 import background from "./img/marvel_phase_4.jpg";
 import { useState } from "react";
 
@@ -38,6 +39,7 @@ function App() {
         <div className="App" style={{ backgroundImage: `url(${background})` }}>
             <div className="title">
                 <h2>Phase 4 Marvel Todos</h2>
+                <TodoForm todoItems={todoItems} setTodoItems={setTodoItems} />
             </div>
             <div className="list">
                 {todoItems.map((item) => {
