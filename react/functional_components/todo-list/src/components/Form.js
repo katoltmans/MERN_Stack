@@ -38,9 +38,9 @@ function TodoForm(props) {
             <form onSubmit={handleSubmit}>
                 <label>Add Marvel Media To List:</label>
                 <input
-                    className={styles.input}
+                    className={styles.checkbox}
                     type="text"
-                    placeholder="Enter a Marvel movie or series to view."
+                    placeholder="Enter a Marvel movie or series to view"
                     value={todo}
                     onChange={(e) => setTodo(e.target.value)}
                     /*todo !== " " && todo.length < 5 ? <p>Todo item must be at least 5 characters</p> : null*/

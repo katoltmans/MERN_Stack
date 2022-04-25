@@ -17,8 +17,12 @@
 }
 
 .title {
-    width: 300px;
+    width: 350px;
     margin-left: 260px;
     color: powderblue;
     background-color: black;
+}
+
+.container {
+    width: 700px;
 }

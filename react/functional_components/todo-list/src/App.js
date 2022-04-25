@@ -41,21 +41,26 @@ function App() {
                 backgroundImage: `url(https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2021/05/marvel-phase-4-1620106838.jpg)`,
             }}
         >
-            <div className="title">
-                <h2>Phase 4 Marvel Todos</h2>
-                <TodoForm todoItems={todoItems} setTodoItems={setTodoItems} />
-            </div>
-            <div className="list">
-                {todoItems.map((item) => {
-                    return (
-                        <Todo
-                            key={item.id}
-                            item={item}
-                            todoItems={todoItems}
-                            setTodoItems={setTodoItems}
-                        />
-                    );
-                })}
+            <div className="container">
+                <div className="title">
+                    <h2>Phase 4 Marvel Must Sees</h2>
+                    <TodoForm
+                        todoItems={todoItems}
+                        setTodoItems={setTodoItems}
+                    />
+                </div>
+                <div className="list">
+                    {todoItems.map((item) => {
+                        return (
+                            <Todo
+                                key={item.id}
+                                item={item}
+                                todoItems={todoItems}
+                                setTodoItems={setTodoItems}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );
