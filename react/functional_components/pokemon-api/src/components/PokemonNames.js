@@ -5,7 +5,7 @@ const DisplayNames = (props) => {
 
     useEffect(() => {
         console.log("Names");
-        fetch("https://pokeapi.co/api/v2/pokemon/")
+        fetch("https://pokeapi.co/api/v2/pokemon/?limit=807")
             .then((response) => {
                 return response.json();
             })
