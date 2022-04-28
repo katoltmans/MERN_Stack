@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import Number from "./Number.js";
 import Word from "./Word.js";
 
 const WordNumChooser = (props) => {
-    const { path } = useParams();
+    const { path, colorA, colorB } = useParams();
+    console.log("WHAT ARE PARAMS", path, colorA, colorB);
 
     return (
         <>
