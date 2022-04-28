@@ -3,6 +3,8 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home.js";
 import Number from "./components/Number.js";
+import Word from "./components/Word.js";
+import WordNumChooser from "./components/WordNumChooser";
 
 function App() {
     return (
@@ -10,7 +12,7 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/:num" element={<Number />} />
+                    <Route path="/:path" element={<WordNumChooser />} />
                 </Routes>
             </div>
         </BrowserRouter>
