@@ -6,7 +6,7 @@ const JokeSchema = mongoose.Schema(
         punchline: String,
     },
     {
-        timestamp: true,
+        timestamps: true,
     }
 );
 

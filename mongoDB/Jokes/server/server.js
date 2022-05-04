@@ -1,8 +1,7 @@
 const express = require("express");
+require("./config/mongoose.config");
 const app = express();
 const PORT = 8000;
-
-require("./config/mongoose.config");
 
 // body parser
 app.use(express.json(), express.urlencoded({ extended: true }));
