@@ -1,4 +1,4 @@
-const Joke = require("../models.jokes.model");
+const Joke = require("../models/jokes.model");
 
 // function to get all jokes
 module.exports.getAllJokes = (req, res) => {

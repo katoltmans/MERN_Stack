@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const JokeSchema = new mongoose.schema(
+const JokeSchema = mongoose.Schema(
     {
         setup: String,
         punchline: String,
