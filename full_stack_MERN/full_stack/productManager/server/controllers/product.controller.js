@@ -2,21 +2,19 @@ const Product = require("../models/product.model");
 
 // function to create a product
 module.exports.createProduct = (req, res) => {
-    Product.create(req.body),
-        {
-            runValidators: true,
-        }
-            .then((newProduct) => {
-                res.json({ product: newProduct });
-                console.log(newProduct);
-            })
-            .catch((err) => {
-                res.json({
-                    message:
-                        "Uh oh... there seems to be an error with this product...",
-                    error: err,
-                });
+    console.log(req.body);
+    Product.create(req.body)
+        .then((newProduct) => {
+            res.status(201).json(newProduct);
+            console.log(newProduct);
+        })
+        .catch((err) => {
+            res.json({
+                message:
+                    "Uh oh... there seems to be an error with this product...",
+                error: err,
             });
+        });
 };
 
 // function to find all products
