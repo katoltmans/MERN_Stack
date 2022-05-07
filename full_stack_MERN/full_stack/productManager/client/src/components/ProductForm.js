@@ -4,7 +4,7 @@ import axios from "axios";
 const ProductForm = () => {
     // hooks to match
     const [title, setTitle] = useState("");
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState(0.0);
     const [description, setDescription] = useState("");
 
     //handler for when form is submitted
@@ -13,7 +13,7 @@ const ProductForm = () => {
         e.preventDefault();
         // make a post request to create a new product
         axios
-            .post("http://localhost:8000/api/priducts", {
+            .post("http://localhost:8000/api/products", {
                 // shortcut syntax for document keys
                 title,
                 price,
@@ -38,6 +38,7 @@ const ProductForm = () => {
                 <br />
                 <input
                     type="number"
+                    step="0.01"
                     onChange={(e) => setPrice(e.target.value)}
                 />
             </p>
