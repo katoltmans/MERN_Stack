@@ -8,6 +8,7 @@ module.exports.index = (request, response) => {
     });
 };
 
+// <ethod to add a person
 module.exports.createPerson = (request, response) => {
     // Mongoose's "create" method is run using our Person model to add a new person to our db's person collection.
     // request.body will contain something like {firstName: "Billy", lastName: "Washington"} from the client
@@ -16,6 +17,7 @@ module.exports.createPerson = (request, response) => {
         .catch((err) => response.json(err));
 };
 
+// Method to find all people
 module.exports.getAllPeople = (request, response) => {
     Person.find({})
         .then((persons) => {
@@ -26,4 +28,11 @@ module.exports.getAllPeople = (request, response) => {
             console.log(err);
             response.json(err);
         });
+};
+
+// Method to locate a specific person
+module.exports.getPerson = (request, response) => {
+    Person.findOne({ _id: request.params.id })
+        .then((person) => response.json(person))
+        .catch((err) => response.json(err));
 };
