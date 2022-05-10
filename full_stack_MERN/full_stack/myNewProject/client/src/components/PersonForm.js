@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const PersonForm = () => {
+const PersonForm = (props) => {
+    // bring in the parent state as props
+    const { people, setPeople } = props;
     //keep track of what is being typed via the useState hook
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -20,6 +22,10 @@ const PersonForm = () => {
             .then((res) => {
                 console.log(res); //always console log to get used to tracking data!
                 console.log(res.data);
+                // update the lifted state of our people array to
+                // include the current value in state plus the single
+                // new object created and returned from our post request.
+                setPeople([...setPeople, res.data]);
             })
             .catch((err) => console.log(err));
     };

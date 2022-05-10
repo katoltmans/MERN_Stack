@@ -16,9 +16,9 @@ const PersonList = (props) => {
                 setPeople(res.data);
             })
             .catch((err) => {
-                console.log(err);
+                console.log("ERROR IN GET ALL", err);
             });
-    }, []);
+    }, []); //empty array is to prevent the useEffect from running indefinitely
 
     return (
         <div>
