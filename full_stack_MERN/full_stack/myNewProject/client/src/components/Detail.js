@@ -12,7 +12,7 @@ const Detail = (props) => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:8000/api/people" + id)
+            .get("http://localhost:8000/api/people/" + id)
             .then((res) => {
                 console.log(res.data);
                 setPerson(res.data);

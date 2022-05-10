@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const PersonList = (props) => {
     /* We deconstruct getter and setter which were passed down
@@ -24,9 +25,18 @@ const PersonList = (props) => {
         <div>
             {people.map((person, index) => {
                 return (
-                    <p ket={index}>
+                    <div key={index}>
+                        {" "}
+                        {/* map requires only ONE parent element */}
                         {person.lastName}, {person.firstName}
-                    </p>
+                        {/* the :id in App.js takes a user here */}
+                        {/* Clicking this element will assign the "id" param to the 
+                        value of the document's _id field. */}
+                        {/* This takes the app tp a path similar to "localhost:3000/people/627837837af9898989c9848" */}
+                        <Link to={`/people/${person._id}`}>
+                            {person.firstName}'s Page!
+                        </Link>
+                    </div>
                 );
             })}
         </div>
