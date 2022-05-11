@@ -35,7 +35,7 @@ module.exports.findAllProducts = (req, res) => {
 module.exports.findOneProduct = (req, res) => {
     Product.findById(req.params)
         .then((oneProduct) => {
-            res.json({ product: oneProduct });
+            res.json(oneProduct);
         })
         .catch((err) => {
             res.json({
@@ -52,7 +52,7 @@ module.exports.updateProduct = (req, res) => {
         runValidators: true,
     })
         .then((updatedProduct) => {
-            res.json({ product: updatedProduct });
+            res.json(updatedProduct);
         })
         .catch((err) => {
             res.json({
@@ -66,7 +66,7 @@ module.exports.updateProduct = (req, res) => {
 module.exports.deleteProduct = (req, res) => {
     Product.findByIdAndDelete(req.params._id)
         .then((result) => {
-            res.json({ result: result });
+            res.json(result);
         })
         .catch((err) => {
             res.json({
