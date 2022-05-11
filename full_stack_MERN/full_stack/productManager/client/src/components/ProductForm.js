@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ProductForm = () => {
-    // hooks to match
+const ProductForm = (props) => {
+    // Bring in props from parent component
+    const { products, setProducts } = props;
+    // useState hooks to match database keys
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0.0);
     const [description, setDescription] = useState("");
@@ -11,7 +13,7 @@ const ProductForm = () => {
     const onSubmitHandler = (e) => {
         // prevent default refresh behavior on submit
         e.preventDefault();
-        // make a post request to create a new product
+        // make a post request to create a new products
         axios
             .post("http://localhost:8000/api/products", {
                 // shortcut syntax for document keys
@@ -22,14 +24,15 @@ const ProductForm = () => {
             .then((res) => {
                 console.log(res); // track data in the console
                 console.log(res.data);
+                setProducts([...products, res.data]);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log("Error with the post request", err));
     };
 
     return (
         <form onSubmit={onSubmitHandler}>
             <p>
-                <label>Product Title:</label>
+                <label>products Title:</label>
                 <br />
                 <input type="text" onChange={(e) => setTitle(e.target.value)} />
             </p>

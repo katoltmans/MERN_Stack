@@ -21,7 +21,7 @@ module.exports.createProduct = (req, res) => {
 module.exports.findAllProducts = (req, res) => {
     Product.find()
         .then((allProducts) => {
-            res.json({ products: allProducts });
+            res.json(allProducts);
         })
         .catch((err) => {
             res.json({
