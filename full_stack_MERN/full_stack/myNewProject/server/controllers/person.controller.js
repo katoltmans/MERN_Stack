@@ -8,7 +8,7 @@ module.exports.index = (request, response) => {
     });
 };
 
-// <ethod to add a person
+// Method to add a person
 module.exports.createPerson = (request, response) => {
     // Mongoose's "create" method is run using our Person model to add a new person to our db's person collection.
     // request.body will contain something like {firstName: "Billy", lastName: "Washington"} from the client
@@ -34,5 +34,22 @@ module.exports.getAllPeople = (request, response) => {
 module.exports.getPerson = (request, response) => {
     Person.findOne({ _id: request.params.id })
         .then((person) => response.json(person))
+        .catch((err) => response.json(err));
+};
+
+// Method to update a person
+module.exports.updatePerson = (request, response) => {
+    Person.findOneAndUpdate({ _id: request.params.id }, request.body, {
+        new: true,
+    })
+        .then((updatedPerson) => response.json(updatedPerson))
+        .catch((err) => response.json(err));
+};
+
+// Method to delete a person
+module.exports.deletePerson = (request, response) => {
+    Person.deleteOne({ _id: request.params.id }) //note: ".id" here MUST match
+        // id in the corresponding route
+        .then((deleteConfirmation) => response.json(deleteConfirmation))
         .catch((err) => response.json(err));
 };
