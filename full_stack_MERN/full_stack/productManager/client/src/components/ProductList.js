@@ -19,16 +19,13 @@ const ProductList = (props) => {
 
     return (
         <div>
+            <h2>All Products:</h2>
             {products.map((product, index) => {
                 return (
                     <div key={index}>
-                        <h3>{product.title}</h3>
-                        <br />
-                        <p>
-                            {product.price}
-                            <br />
-                            {product.description}
-                        </p>
+                        <Link to={`/products/${product._id}`}>
+                            {product.title}
+                        </Link>
                     </div>
                 );
             })}

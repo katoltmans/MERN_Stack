@@ -31,8 +31,9 @@ const ProductForm = (props) => {
 
     return (
         <form onSubmit={onSubmitHandler}>
+            <h2>Product Manager</h2>
             <p>
-                <label>products Title:</label>
+                <label>Product Title:</label>
                 <br />
                 <input type="text" onChange={(e) => setTitle(e.target.value)} />
             </p>
@@ -53,7 +54,7 @@ const ProductForm = (props) => {
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </p>
-            <input type="submit" />
+            <input type="submit" value="Create" />
         </form>
     );
 };
