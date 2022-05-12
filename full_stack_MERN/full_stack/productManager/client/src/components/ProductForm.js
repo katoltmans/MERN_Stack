@@ -25,6 +25,9 @@ const ProductForm = (props) => {
                 console.log(res); // track data in the console
                 console.log(res.data);
                 setProducts([...products, res.data]);
+                setTitle("");
+                setPrice(0.0);
+                setDescription("");
             })
             .catch((err) => console.log("Error with the post request", err));
     };

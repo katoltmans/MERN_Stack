@@ -44,7 +44,9 @@ const ProductList = (props) => {
                         <Link to={`/product/edit/${product._id}`}>
                             <button>Update</button>
                         </Link>
-                        <button>Delete</button>
+                        <button onClick={() => handleDelete(product._id)}>
+                            Delete
+                        </button>
                     </div>
                 );
             })}
