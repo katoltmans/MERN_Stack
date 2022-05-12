@@ -17,6 +17,20 @@ const ProductList = (props) => {
             });
     }, []);
 
+    const handleDelete = (productId) => {
+        axios
+            .delete(`http://localhost:8000/api/products/${productId}`)
+            .then((res) => {
+                console.log(res);
+                setProducts(
+                    products.filter((product) => product._id !== productId)
+                );
+            })
+            .catch((err) => {
+                console.log("error with delete request", err);
+            });
+    };
+
     return (
         <div>
             <h2>All Products:</h2>
@@ -26,6 +40,11 @@ const ProductList = (props) => {
                         <Link to={`/products/${product._id}`}>
                             {product.title}
                         </Link>
+                        <br />
+                        <Link to={`/product/edit/${product._id}`}>
+                            <button>Update</button>
+                        </Link>
+                        <button>Delete</button>
                     </div>
                 );
             })}

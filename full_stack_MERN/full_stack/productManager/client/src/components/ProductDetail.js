@@ -25,6 +25,9 @@ const ProductDetail = (props) => {
                 <p>Price: {product.price}</p>
                 <p>Description: {product.description}</p>
             </div>
+            <Link to={`/product/edit/${product._id}`}>
+                <button>Update Product</button>
+            </Link>
             <Link to={`/`}>
                 <button>Back to Product Manager</button>
             </Link>
