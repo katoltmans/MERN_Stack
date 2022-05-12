@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Update = (props) => {
-    const { id } = useParams; //this process is identical to the one used in the Details.js component
+    const { id } = useParams(); //this process is identical to the one used in the Details.js component
     //set up hook states
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
@@ -17,7 +17,7 @@ const Update = (props) => {
             .then((res) => {
                 setFirstName(res.data.firstName);
                 setLastName(res.data.lastName);
-                console.log(firstName, lastName);
+                console.log(id, firstName, lastName);
             })
             .catch((err) => console.log(err));
     }, []); // empty array to prevent useEffect from running indefinitely
