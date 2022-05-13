@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import styles from "../components/UpdateProduct.module.css";
 
 const UpdateProduct = (props) => {
     // useState hooks to match database keys
@@ -45,7 +46,7 @@ const UpdateProduct = (props) => {
     };
 
     return (
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} className={styles.update}>
             <h3>Update Product</h3>
             <p>
                 <label>Product Title:</label>
@@ -69,13 +70,17 @@ const UpdateProduct = (props) => {
             <p>
                 <label>Description:</label>
                 <br />
-                <input
-                    type="text"
+                <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
+                    className={styles.description}
                 />
             </p>
-            <input type="submit" value="Update Product" />
+            <input
+                type="submit"
+                value="Update Product"
+                className={styles.submit}
+            />
         </form>
     );
 };

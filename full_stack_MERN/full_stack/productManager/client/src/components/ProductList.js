@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styles from "../components/ProductList.module.css";
 
 const ProductList = (props) => {
     const { products, setProducts } = props;
@@ -32,19 +33,29 @@ const ProductList = (props) => {
     };
 
     return (
-        <div>
+        <div className={styles.list}>
             <h2>All Products:</h2>
             {products.map((product, index) => {
                 return (
                     <div key={index}>
-                        <Link to={`/products/${product._id}`}>
+                        <Link
+                            to={`/products/${product._id}`}
+                            style={{
+                                color: "whitesmoke",
+                                fontSize: "130%",
+                                color: "lightcyan",
+                            }}
+                        >
                             {product.title}
                         </Link>
                         <br />
                         <Link to={`/product/edit/${product._id}`}>
-                            <button>Update</button>
+                            <button className={styles.update}>Update</button>
                         </Link>
-                        <button onClick={() => handleDelete(product._id)}>
+                        <button
+                            onClick={() => handleDelete(product._id)}
+                            className={styles.delete}
+                        >
                             Delete
                         </button>
                     </div>

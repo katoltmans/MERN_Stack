@@ -1,0 +1,22 @@
+h2 {
+    color: lightblue;
+    font-weight: bold;
+    font-size: 200%;
+}
+
+label {
+    font-size: 110%;
+}
+
+input textarea {
+    border-radius: 5px;
+    width: 20rem;
+    font-size: 130%;
+    background-color: linen;
+}
+
+.submit {
+    width: 5rem;
+    font-size: 100%;
+    background-color: lightblue;
+}

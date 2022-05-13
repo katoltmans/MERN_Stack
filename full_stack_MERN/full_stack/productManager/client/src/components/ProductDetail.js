@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import styles from "../components/ProductDetail.module.css";
 
 const ProductDetail = (props) => {
     const [product, setProduct] = useState({});
@@ -19,7 +20,7 @@ const ProductDetail = (props) => {
     }, []);
 
     return (
-        <div>
+        <div className={styles.details}>
             <div>
                 <h2>{product.title}</h2>
                 <p>Price: {product.price}</p>

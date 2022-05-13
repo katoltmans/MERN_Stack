@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios";
 import ProductForm from "../components/ProductForm";
 import ProductList from "../components/ProductList";
+import styles from "../views/Main.module.css";
 
 const Main = (props) => {
     const [products, setProducts] = useState([]);
 
     return (
-        <div>
+        <div className={styles.container}>
             <ProductForm products={products} setProducts={setProducts} />
             <hr />
             <ProductList products={products} setProducts={setProducts} />

@@ -1,0 +1,28 @@
+.update {
+    margin: 0 45rem;
+    padding: 2rem;
+    background-color: rgba(90, 90, 170, 0.95);
+    color: whitesmoke;
+}
+
+h3 {
+    color: lightblue;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.submit {
+    width: auto;
+    padding: 3px 5px;
+    font-size: 100%;
+    background-color: lightblue;
+}
+
+input,
+textarea {
+    height: auto;
+    overflow-wrap: break-word;
+    font-size: 110%;
+    background-color: linen;
+    border-radius: 5px;
+}

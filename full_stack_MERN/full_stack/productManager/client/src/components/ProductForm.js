@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import styles from "../components/ProductForm.module.css";
 
 const ProductForm = (props) => {
     // Bring in props from parent component
@@ -33,7 +34,7 @@ const ProductForm = (props) => {
     };
 
     return (
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} className={styles.productForm}>
             <h2>Product Manager</h2>
             <p>
                 <label>Product Title:</label>
@@ -57,7 +58,7 @@ const ProductForm = (props) => {
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Create" className={styles.submit} />
         </form>
     );
 };
