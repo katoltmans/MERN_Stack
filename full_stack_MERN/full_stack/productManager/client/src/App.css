@@ -8,6 +8,7 @@ body {
     background-image: url("/public/nana-smirnova-IEiAmhXehwE-unsplash.jpg");
     background-color: lightcyan;
     background-position: center;
+    background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
 }
