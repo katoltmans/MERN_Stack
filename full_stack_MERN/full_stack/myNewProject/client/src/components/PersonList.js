@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import DeleteButton from "./DeleteButton";
 
 const PersonList = (props) => {
     /* We deconstruct getter and setter which were passed down
     via props by the parent component (App.js) to our child component (PersonList.js).
     Now we can easily use the getter and setter without having to write props.getter
     or props.setter every time: */
-    const { removeFromDom, people, setPeople } = props;
+    const [people, setPeople] = useState([]);
 
     useEffect(() => {
         axios
             .get("http://localhost:8000/api/people")
             .then((res) => {
-                console.log(res.data);
                 setPeople(res.data);
             })
             .catch((err) => {
@@ -21,23 +21,16 @@ const PersonList = (props) => {
             });
     }, []); //empty array is to prevent the useEffect from running indefinitely
 
-    const deletePerson = (personId) => {
-        axios
-            .delete("http:localhost:8000/api/people" + personId)
-            .then((res) => {
-                removeFromDom(personId);
-            })
-            .catch((err) => console.log(err));
+    const removeFromDom = (personId) => {
+        setPeople(people.filter((person) => person._id != personId));
     };
 
     return (
         <div>
+            {/* map requires only ONE parent element */}
             {people.map((person, index) => {
-                {
-                    /* map requires only ONE parent element */
-                }
                 return (
-                    <div key={index}>
+                    <p key={index}>
                         <Link to={"/people/" + person._id}>
                             {person.lastName}, {person.firstName}
                         </Link>
@@ -46,14 +39,11 @@ const PersonList = (props) => {
                         value of the document's _id field. */}
                         {/* This takes the app to a path similar to "localhost:3000/people/627837837af9898989c9848" */}
                         |<Link to={"/people/edit/" + person._id}>Edit</Link>|
-                        <button
-                            onClick={(e) => {
-                                deletePerson(person._id);
-                            }}
-                        >
-                            Delete
-                        </button>
-                    </div>
+                        <DeleteButton
+                            personId={person._id}
+                            successCallback={() => removeFromDom(person._id)}
+                        />
+                    </p>
                 );
             })}
         </div>

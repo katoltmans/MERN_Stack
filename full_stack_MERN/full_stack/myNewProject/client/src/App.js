@@ -11,7 +11,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     {/*adding the default makes this the default path */}
-                    <Route element={<Main />} path="/home" default />
+                    <Route element={<Main />} path="/" default />
                     <Route element={<Detail />} path="/people/:id" />
                     {/* The :id part of our path is a variable that we must give value to. */}
                     <Route element={<Update />} path="/people/edit/:id" />

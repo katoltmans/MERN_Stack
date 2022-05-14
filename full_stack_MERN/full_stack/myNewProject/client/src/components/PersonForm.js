@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const PersonForm = (props) => {
     // bring in the parent state as props
-    const { initialFirstName, initialLastName, onSubmitProps } = props;
+    const { initialFirstName, initialLastName, onSubmitProp } = props;
     //keep track of what is being typed via the useState hook
     const [firstName, setFirstName] = useState(initialFirstName);
     const [lastName, setLastName] = useState(initialLastName);
@@ -11,7 +11,7 @@ const PersonForm = (props) => {
     const onSubmitHandler = (e) => {
         //prevent default behavior of the submit
         e.preventDefault();
-        onSubmitProps({ firstName, lastName });
+        onSubmitProp({ firstName, lastName });
     };
 
     return (
@@ -39,7 +39,7 @@ const PersonForm = (props) => {
                     onChange={(e) => setLastName(e.target.value)}
                 />
             </p>
-            <input type="submit" />
+            <input type="submit" onClick={onSubmitHandler} />
         </div>
     );
 };
