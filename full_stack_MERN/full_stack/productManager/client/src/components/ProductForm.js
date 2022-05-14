@@ -1,45 +1,34 @@
 import React, { useState } from "react";
-import axios from "axios";
 import styles from "../components/ProductForm.module.css";
 
 const ProductForm = (props) => {
     // Bring in props from parent component
-    const { products, setProducts } = props;
+    const { initialTitle, initialPrice, initialDescription, onSubmitProps } =
+        props;
     // useState hooks to match database keys
-    const [title, setTitle] = useState("");
-    const [price, setPrice] = useState(0.0);
-    const [description, setDescription] = useState("");
+    const [title, setTitle] = useState(initialTitle);
+    const [price, setPrice] = useState(initialPrice);
+    const [description, setDescription] = useState(initialDescription);
 
     //handler for when form is submitted
     const onSubmitHandler = (e) => {
         // prevent default refresh behavior on submit
         e.preventDefault();
         // make a post request to create a new products
-        axios
-            .post("http://localhost:8000/api/products", {
-                // shortcut syntax for document keys
-                title,
-                price,
-                description,
-            })
-            .then((res) => {
-                console.log(res); // track data in the console
-                console.log(res.data);
-                setProducts([...products, res.data]);
-                setTitle("");
-                setPrice(0.0);
-                setDescription("");
-            })
-            .catch((err) => console.log("Error with the post request", err));
+        onSubmitProps({ title, price, description });
     };
 
     return (
-        <form onSubmit={onSubmitHandler} className={styles.productForm}>
-            <h2>Product Manager</h2>
+        <div>
             <p>
                 <label>Product Title:</label>
                 <br />
-                <input type="text" onChange={(e) => setTitle(e.target.value)} />
+                <input
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
             </p>
             <p>
                 <label>Price:</label>
@@ -47,19 +36,26 @@ const ProductForm = (props) => {
                 <input
                     type="number"
                     step="0.01"
+                    name="price"
+                    value={price}
                     onChange={(e) => setPrice(e.target.value)}
                 />
             </p>
             <p>
                 <label>Description:</label>
                 <br />
-                <input
-                    type="text"
+                <textarea
+                    name="description"
+                    value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                />
+                ></textarea>
             </p>
-            <input type="submit" value="Create" className={styles.submit} />
-        </form>
+            <input
+                type="submit"
+                onClick={onSubmitHandler}
+                className={styles.submit}
+            />
+        </div>
     );
 };
 

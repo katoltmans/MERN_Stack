@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import styles from "../components/ProductList.module.css";
+import DeleteButton from "./DeleteButton";
 
 const ProductList = (props) => {
-    const { products, setProducts } = props;
+    const { handleDelete, products, setProducts } = props;
 
     useEffect(() => {
         axios
@@ -14,23 +15,9 @@ const ProductList = (props) => {
                 setProducts(res.data);
             })
             .catch((err) => {
-                console.log("Error with getALL request", err);
+                console.log("Error fetching data for list", err);
             });
     }, []);
-
-    const handleDelete = (productId) => {
-        axios
-            .delete(`http://localhost:8000/api/products/${productId}`)
-            .then((res) => {
-                console.log(res);
-                setProducts(
-                    products.filter((product) => product._id !== productId)
-                );
-            })
-            .catch((err) => {
-                console.log("error with delete request", err);
-            });
-    };
 
     return (
         <div className={styles.list}>
@@ -52,12 +39,10 @@ const ProductList = (props) => {
                         <Link to={`/product/edit/${product._id}`}>
                             <button className={styles.update}>Update</button>
                         </Link>
-                        <button
-                            onClick={() => handleDelete(product._id)}
-                            className={styles.delete}
-                        >
-                            Delete
-                        </button>
+                        <DeleteButton
+                            productId={product._id}
+                            successCallback={() => Navigate("/")}
+                        />
                     </div>
                 );
             })}

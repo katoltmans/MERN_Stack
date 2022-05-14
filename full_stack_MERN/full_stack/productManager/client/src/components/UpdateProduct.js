@@ -1,87 +1,38 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "../components/UpdateProduct.module.css";
+import ProductForm from "./ProductForm";
 
 const UpdateProduct = (props) => {
-    // useState hooks to match database keys
-    const [title, setTitle] = useState("");
-    const [price, setPrice] = useState(0.0);
-    const [description, setDescription] = useState("");
     const { id } = useParams();
+    const [product, setProduct] = useState({});
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         axios
             .get(`http://localhost:8000/api/products/${id}`)
             .then((res) => {
-                console.log("product", res.data);
-                setTitle(res.data.title);
-                setPrice(res.data.price);
-                setDescription(res.data.description);
+                setProduct(res.data);
+                setLoaded(true);
             })
             .catch((err) => {
                 console.log("Error loading data", err);
             });
     }, []);
 
-    // Added allow easy navigation between components
-    const navigate = useNavigate();
-
-    //handler for when form is submitted
-    const onSubmitHandler = (e) => {
-        // prevent default refresh behavior on submit
-        e.preventDefault();
-        // make a post request to create a new products
-        axios
-            .put(`http://localhost:8000/api/products/${id}`, {
-                // shortcut syntax for document keys
-                title,
-                price,
-                description,
-            })
-            .then((res) => {
-                navigate("/");
-            })
-            .catch((err) => console.log("Error with the put request", err));
-    };
-
     return (
-        <form onSubmit={onSubmitHandler} className={styles.update}>
+        <div>
             <h3>Update Product</h3>
-            <p>
-                <label>Product Title:</label>
-                <br />
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+            {loaded && (
+                <ProductForm
+                    onSubmitProp={UpdateProduct}
+                    initialTitle={product.title}
+                    initialPrice={product.price}
+                    initialDescription={product.description}
                 />
-            </p>
-            <p>
-                <label>Price:</label>
-                <br />
-                <input
-                    type="number"
-                    step="0.01"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                />
-            </p>
-            <p>
-                <label>Description:</label>
-                <br />
-                <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className={styles.description}
-                />
-            </p>
-            <input
-                type="submit"
-                value="Update Product"
-                className={styles.submit}
-            />
-        </form>
+            )}
+        </div>
     );
 };
 
