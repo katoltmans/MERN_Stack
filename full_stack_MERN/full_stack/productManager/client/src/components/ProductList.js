@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../components/ProductList.module.css";
 import DeleteButton from "./DeleteButton";
 
 const ProductList = (props) => {
-    const { handleDelete, products, setProducts } = props;
+    const { products, setProducts, removeFromDom } = props;
 
     useEffect(() => {
         axios
@@ -18,6 +18,10 @@ const ProductList = (props) => {
                 console.log("Error fetching data for list", err);
             });
     }, []);
+
+    const handleDelete = (productId) => {
+        removeFromDom(productId);
+    };
 
     return (
         <div className={styles.list}>
@@ -41,7 +45,7 @@ const ProductList = (props) => {
                         </Link>
                         <DeleteButton
                             productId={product._id}
-                            successCallback={() => Navigate("/")}
+                            successCallback={handleDelete}
                         />
                     </div>
                 );

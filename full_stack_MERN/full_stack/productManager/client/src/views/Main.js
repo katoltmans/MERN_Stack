@@ -3,9 +3,11 @@ import axios from "axios";
 import ProductForm from "../components/ProductForm";
 import ProductList from "../components/ProductList";
 import styles from "../views/Main.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Main = (props) => {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -19,7 +21,7 @@ const Main = (props) => {
             });
     }, []);
 
-    const handleDelete = (productId) => {
+    const removeFromDom = (productId) => {
         axios
             .delete(`http://localhost:8000/api/products/${productId}`)
             .then((res) => {
@@ -40,6 +42,7 @@ const Main = (props) => {
                 console.log(res);
                 console.log(res.data);
                 setProducts([...products, res.data]);
+                navigate("/");
             })
             .catch((err) => {
                 console.log("Error with create request", err);
@@ -56,7 +59,7 @@ const Main = (props) => {
                 initialDescription=""
             />
             <hr />
-            <ProductList products={products} handleDelete={handleDelete} />
+            <ProductList products={products} removeFromDom={removeFromDom} />
         </div>
     );
 };

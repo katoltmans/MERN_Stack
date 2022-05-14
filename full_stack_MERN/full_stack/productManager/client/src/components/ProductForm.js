@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import styles from "../components/ProductForm.module.css";
+import { useNavigate } from "react-router-dom";
 
 const ProductForm = (props) => {
     // Bring in props from parent component
-    const { initialTitle, initialPrice, initialDescription, onSubmitProps } =
+    const { initialTitle, initialPrice, initialDescription, onSubmitProp } =
         props;
     // useState hooks to match database keys
     const [title, setTitle] = useState(initialTitle);
     const [price, setPrice] = useState(initialPrice);
     const [description, setDescription] = useState(initialDescription);
+    const navigate = useNavigate();
 
     //handler for when form is submitted
     const onSubmitHandler = (e) => {
         // prevent default refresh behavior on submit
         e.preventDefault();
         // make a post request to create a new products
-        onSubmitProps({ title, price, description });
+        onSubmitProp({ title, price, description });
+        navigate("/", { replace: true });
     };
 
     return (

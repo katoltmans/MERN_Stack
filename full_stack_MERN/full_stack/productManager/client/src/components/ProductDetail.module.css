@@ -1,5 +1,6 @@
 .details {
-    margin: 0 45rem;
+    margin: 0 auto;
+    width: 25rem;
     padding: 2rem;
     background-color: rgba(90, 90, 170, 0.95);
     color: whitesmoke;
