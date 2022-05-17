@@ -4,7 +4,7 @@ const AuthorSchema = mongoose.Schema(
     {
         name: {
             type: String,
-            required: [true, "Author name ,ust contain at least 3 characters!"],
+            required: [true, "Author name must contain at least 3 characters!"],
             maxlength: [
                 50,
                 "We are unaware of a need for more than 50 characters. Please shorten the author name.",

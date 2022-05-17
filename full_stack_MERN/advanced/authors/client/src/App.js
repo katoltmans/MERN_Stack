@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { BrowserRouter, Route, Routes, Router } from "react-router-dom";
+// Import components
+import AuthorList from "./components/AuthorList";
+// Import styling
+import { AppBar, Container, Typography } from "@material-ui/core";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div className="App">
+            <Container maxWidth="lg">
+                <AppBar position="relative">
+                    <h1 align="left">Favorite Authors</h1>
+                </AppBar>
+                <BrowserRouter>
+                    <Routes>
+                        <Route element={<AuthorList />} path="/" default />{" "}
+                        //default path
+                    </Routes>
+                </BrowserRouter>
+            </Container>
+        </div>
+    );
+};
 
 export default App;
