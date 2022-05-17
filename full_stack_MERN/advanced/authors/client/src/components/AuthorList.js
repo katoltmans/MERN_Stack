@@ -16,6 +16,7 @@ const AuthorList = (props) => {
     const { authors, setAuthors } = props;
 
     useEffect(() => {
+        // Get request to find all authors
         axios
             .get("http://localhost:8000/api/authors")
             .then((res) => {
@@ -41,7 +42,7 @@ const AuthorList = (props) => {
 
     return (
         <Container component={Paper}>
-            <Link to="/author/add" align="left">
+            <Link to="/author/new" align="left">
                 Add an author
             </Link>
             <h3 align="left">We have quotes by:</h3>

@@ -5,3 +5,7 @@
 h1 {
     margin: 2rem;
 }
+
+.buttonText {
+    text-decoration: none;
+}
