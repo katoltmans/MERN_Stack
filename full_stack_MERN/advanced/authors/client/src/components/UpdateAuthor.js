@@ -15,6 +15,8 @@ const UpdateAuthor = (props) => {
     // useState hooks to match database keys
     const [name, setName] = useState("");
     const { id } = useParams();
+    // State for errors used for validation
+    const [errors, setErrors] = useState({});
 
     // Handler when form is submitted
     useEffect(() => {
@@ -25,12 +27,12 @@ const UpdateAuthor = (props) => {
                 console.log("author", res.data);
                 setName(res.data.name);
             })
-            .catch((err) =>
+            .catch((err) => {
                 console.log(
                     "Error with single author get request (client)",
                     err
-                )
-            );
+                );
+            });
     }, []);
 
     // Handler when form is submitted
@@ -45,9 +47,10 @@ const UpdateAuthor = (props) => {
             .then((res) => {
                 navigate("/");
             })
-            .catch((err) =>
-                console.log("Error with put request (client)", err)
-            );
+            .catch((err) => {
+                console.log("Error with put request (client)", err);
+                setErrors(err.response.data.error.errors);
+            });
     };
 
     return (
@@ -65,6 +68,9 @@ const UpdateAuthor = (props) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
+                    {errors.name ? (
+                        <p className="error">{errors.name.message}</p>
+                    ) : null}
                 </FormControl>
                 <div>
                     <Link to="/" className="buttonText">

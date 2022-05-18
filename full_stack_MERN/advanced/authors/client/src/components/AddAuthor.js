@@ -8,7 +8,6 @@ import {
     FormControl,
     InputLabel,
     OutlinedInput,
-    FormHelperText,
 } from "@material-ui/core";
 
 const AddAuthorForm = (props) => {
