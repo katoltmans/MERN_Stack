@@ -40,6 +40,16 @@ const AuthorList = (props) => {
             });
     };
 
+    const sortArray = (a, b) => {
+        if (a.name < b.name) {
+            return -1;
+        }
+        if (a.name > b.name) {
+            return 1;
+        }
+        return 0;
+    };
+
     return (
         <Container component={Paper}>
             <Link to="/author/new" align="left">
@@ -54,7 +64,7 @@ const AuthorList = (props) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {authors.map((author, index) => {
+                    {authors.sort(sortArray).map((author, index) => {
                         return (
                             <TableRow key={index}>
                                 <TableCell>{author.name}</TableCell>
