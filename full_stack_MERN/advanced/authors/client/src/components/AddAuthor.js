@@ -8,6 +8,7 @@ import {
     FormControl,
     InputLabel,
     OutlinedInput,
+    FormHelperText,
 } from "@material-ui/core";
 
 const AddAuthorForm = (props) => {
@@ -16,6 +17,8 @@ const AddAuthorForm = (props) => {
     const { authors, setAuthors } = props;
     // useState hooks to match database keys
     const [name, setName] = useState("");
+    // State for errors used for validation
+    const [errors, setErrors] = useState({});
 
     // Handler when form is submitted
     const onSubmitHandler = (e) => {
@@ -32,9 +35,13 @@ const AddAuthorForm = (props) => {
                 setAuthors([...authors, res.data]);
                 navigate("/");
             })
-            .catch((err) => console.log("Error with post request", err));
+            .catch((err) => {
+                console.log("Error with post request (client)", err);
+                setErrors(err.response.data.errors);
+                console.log("ERROR:", errors);
+            });
     };
-
+    console.log("ERROR", errors);
     return (
         <Container component={Paper}>
             <Link to="/" align="left">
@@ -49,6 +56,9 @@ const AddAuthorForm = (props) => {
                         name="name"
                         onChange={(e) => setName(e.target.value)}
                     />
+                    {errors.name ? (
+                        <p className="error">{errors.name.message}</p>
+                    ) : null}
                 </FormControl>
                 <div>
                     <Link to="/" className="buttonText">

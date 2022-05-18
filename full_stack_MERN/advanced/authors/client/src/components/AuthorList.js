@@ -24,7 +24,7 @@ const AuthorList = (props) => {
                 setAuthors(res.data);
             })
             .catch((err) => {
-                console.log("Error with the getAll request", err);
+                console.log("Error with the getAll request (client)", err);
             });
     }, []); //Remember to stop the madness with an empty array!
 
@@ -36,7 +36,7 @@ const AuthorList = (props) => {
                 setAuthors(authors.filter((author) => author._id !== authorId));
             })
             .catch((err) => {
-                console.log("Error with the delete request", err);
+                console.log("Error with the delete request (client)", err);
             });
     };
 
@@ -59,7 +59,14 @@ const AuthorList = (props) => {
                             <TableRow key={index}>
                                 <TableCell>{author.name}</TableCell>
                                 <TableCell>
-                                    <Button variant="contained">Edit</Button>
+                                    <Link
+                                        to={`/author/edit/${author._id}`}
+                                        className="buttonText"
+                                    >
+                                        <Button variant="contained">
+                                            Edit
+                                        </Button>
+                                    </Link>
                                     <Button
                                         variant="contained"
                                         onClick={() => handleDelete(author._id)}

@@ -1,22 +1,35 @@
 const Author = require("../models/author.model");
 
-// method to create an author
+//method to create an author
 module.exports.createAuthor = (req, res) => {
     console.log(req.body);
-    Author.create(req.body, {
-        new: true,
-        runValidators: true,
-    })
+    Author.create(req.body)
         .then((newAuthor) => {
-            res.status(201).json(newProduct);
-            console.log(newAuthor);
+            console.log("made a new author", newAuthor);
+            return res.status(201).json(newAuthor);
         })
         .catch((err) => {
-            res.json({
-                message: "Oh no... unable to create this author...",
-                error: err,
-            });
+            console.log(err);
+            return res.status(400).json(err);
         });
+    // Author.create(req.body, {
+    //     //runValidators: true,
+    // })
+    //     .then((newAuthor) => {
+    //         console.log("good response");
+    //         console.log(newAuthor);
+    //         return res.status(201).json(newAuthor);
+    //         console.log(newAuthor);
+    //     })
+    //     .catch((err) => {
+    //         console.log("bad response");
+    //         console.log("SERVER ERROR");
+    //         console.log(err);
+    //         res.status(400).json({
+    //             message: "Oh no... unable to create this author...",
+    //             error: err,
+    //         });
+    //     });
 };
 
 // method to find all authors
@@ -54,10 +67,10 @@ module.exports.updateAuthor = (req, res) => {
         runValidators: true,
     })
         .then((updatedAuthor) => {
-            res.json(updatedAuthor);
+            res.status(202).json(updatedAuthor);
         })
         .catch((err) => {
-            res.json({
+            res.status(400).json({
                 message: "On no... unable to update this author...",
                 error: err,
             });
@@ -71,7 +84,7 @@ module.exports.deleteAuthor = (req, res) => {
             res.json(result);
         })
         .catch((err) => {
-            res.json({
+            res.status(400).json({
                 message: "Oh no... unable to delete this author...",
                 error: err,
             });

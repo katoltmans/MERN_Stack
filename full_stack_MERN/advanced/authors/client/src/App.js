@@ -41,13 +41,8 @@ const App = () => {
                             path="/author/new"
                         />
                         <Route
-                            element={
-                                <UpdateAuthor
-                                    authors={authors}
-                                    setAuthors={setAuthors}
-                                />
-                            }
-                            path="/author/edit/:_id"
+                            element={<UpdateAuthor />}
+                            path="/author/edit/:id"
                         />
                     </Routes>
                 </BrowserRouter>
