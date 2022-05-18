@@ -18,34 +18,35 @@ const App = () => {
                 <Routes>
                     {/*} add routes - remember to pass state */}
                     <Route
+                        path="/players/list"
                         element={
                             <ListView
                                 players={players}
                                 setPlayers={setPlayers}
                             />
                         }
-                        path="/players/list"
                         default
                     />
                     {/* default path */}
                     <Route
+                        path="/players/addplayer"
                         element={
                             <AddPlayerView
                                 players={players}
                                 setPlayers={setPlayers}
                             />
                         }
-                        path="players/addplayer"
                     />
+                    {/*
                     <Route
+                        path="/status/game/:num"
                         element={
                             <PlayerStatus
                                 players={players}
                                 setPlayers={setPlayers}
                             />
                         }
-                        path="/status/game/:num"
-                    />
+                      /> */}
                 </Routes>
             </div>
         </BrowserRouter>

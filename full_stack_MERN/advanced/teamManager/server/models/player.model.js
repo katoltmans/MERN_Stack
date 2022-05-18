@@ -18,7 +18,7 @@ const PlayerSchema = new mongoose.Schema(
                 "second baseman",
                 "third baseman",
                 "shortstop",
-                "eft fielder",
+                "left fielder",
                 "center fielder",
                 "right fielder",
             ],

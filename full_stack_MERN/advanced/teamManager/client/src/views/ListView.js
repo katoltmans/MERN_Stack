@@ -3,11 +3,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import components
 import ListAddToggle from "../components/ListAddToggle";
-import PlayerList from "./AddPlayerView";
-//import { useNavigate } from "react-router-dom";
+import PlayerList from "../components/PlayerList";
 
 const ListView = () => {
-    <h2>List View</h2>;
+    const [players, setPlayers] = useState([]);
+    const navigate = useNavigate();
+
+    return (
+        <div>
+            <h2>List View</h2>
+            <ListAddToggle />
+            <PlayerList player={players} setPlayers={setPlayers} />
+        </div>
+    );
 };
 
 export default ListView;
