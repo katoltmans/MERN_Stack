@@ -46,35 +46,44 @@ const AddPlayer = (props) => {
             <h2>Add Player</h2>
             <form onSubmit={onSubmitHandler}>
                 <div className={styles.formInput}>
-                    <label>Player Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    {errors.name ? (
-                        <p className={styles.error}>{errors.name.message}</p>
-                    ) : null}
+                    <label>
+                        <p>Player Name:</p>
+                        <input
+                            type="text"
+                            name="name"
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        {errors.name ? (
+                            <p className={styles.error}>
+                                {errors.name.message}
+                            </p>
+                        ) : null}
+                    </label>
                 </div>
                 <div className={styles.formInput}>
-                    <label>Preferred Position:</label>
-                    <select
-                        name="position"
-                        onChange={(e) => setPosition(e.target.value)}
-                    >
-                        <option>Select a position</option>
-                        <option value="pitcher">pitcher</option>
-                        <option value="catcher">catcher</option>
-                        <option value="first baseman">first baseman</option>
-                        <option value="second baseman">second baseman</option>
-                        <option value="third baseman">third baseman</option>
-                        <option value="shortstop">shortstop</option>
-                        <option value="left fielder">left fielder</option>
-                        <option value="center fielder">center fielder</option>
-                        <option value="right fielder">right fielder</option>
-                    </select>
+                    <label>
+                        <p>Preferred Position:</p>
+                        <select
+                            name="position"
+                            onChange={(e) => setPosition(e.target.value)}
+                        >
+                            <option>Select a position</option>
+                            <option value="pitcher">pitcher</option>
+                            <option value="catcher">catcher</option>
+                            <option value="first baseman">first baseman</option>
+                            <option value="second baseman">
+                                second baseman
+                            </option>
+                            <option value="third baseman">third baseman</option>
+                            <option value="shortstop">shortstop</option>
+                            <option value="left fielder">left fielder</option>
+                            <option value="center fielder">
+                                center fielder
+                            </option>
+                            <option value="right fielder">right fielder</option>
+                        </select>
+                    </label>
                 </div>
-
                 <br />
                 <button type="submit" className={styles.submit}>
                     Add

@@ -11,27 +11,40 @@
 .submit {
     background-color: green;
     color: white;
-    margin: 1rem 0;
+    margin: 1rem 0 1rem auto;
     padding: 2px 50px;
+    width: 20rem;
 }
 
 form {
     margin: 3px 3px 3px 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: stretch;
 }
 
 input {
-    width: 55rem;
+    flex-grow: 1;
 }
 
 select {
-    width: 55rem;
+    flex: 1;
 }
 
 .formInput {
     margin-bottom: 1.5rem;
+    display: flex;
+}
+
+.formInput label {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.formInput label p {
+    margin: 0;
+    width: 15rem;
 }
 
 label {
