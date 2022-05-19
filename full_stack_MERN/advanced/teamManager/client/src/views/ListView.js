@@ -11,9 +11,9 @@ const ListView = () => {
 
     return (
         <div>
-            <h2>List View</h2>
-            <ListAddToggle />
-            <PlayerList player={players} setPlayers={setPlayers} />
+            <ListAddToggle>
+                <PlayerList player={players} setPlayers={setPlayers} />
+            </ListAddToggle>
         </div>
     );
 };

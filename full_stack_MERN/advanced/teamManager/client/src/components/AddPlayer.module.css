@@ -1,0 +1,44 @@
+.addPlayer {
+    margin: 2rem auto;
+    border: solid 1px black;
+    color: black;
+    padding: 2rem;
+}
+.error {
+    color: red;
+}
+
+.submit {
+    background-color: green;
+    color: white;
+    margin: 1rem 0;
+    padding: 2px 50px;
+}
+
+form {
+    margin: 3px 3px 3px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+input {
+    width: 55rem;
+}
+
+select {
+    width: 55rem;
+}
+
+.formInput {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    margin-right: 1rem;
+}
+
+h2 {
+    font-size: 150%;
+    margin: 0;
+}

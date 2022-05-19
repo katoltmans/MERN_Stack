@@ -1,0 +1,8 @@
+.toggleBox {
+    background-color: white;
+    margin: 0 2rem;
+    padding: 1rem;
+    font-size: 120%;
+    color: steelblue;
+    border: black solid 1px;
+}

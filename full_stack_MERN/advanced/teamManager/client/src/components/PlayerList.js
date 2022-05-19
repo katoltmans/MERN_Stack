@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styles from "../components/PlayerList.module.css";
 
 const PlayerList = () => {
     const [players, setPlayers] = useState([]);
@@ -41,7 +42,7 @@ const PlayerList = () => {
     };
 
     return (
-        <div className="playerList">
+        <div className={styles.playerList}>
             <table>
                 <thead>
                     <tr>

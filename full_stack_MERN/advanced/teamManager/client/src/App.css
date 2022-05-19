@@ -2,8 +2,19 @@
     margin: 0;
     padding: 0;
     text-align: left;
+    background-color: lightgray;
+    height: 100%;
 }
 
-div {
-    border: solid red 1px;
+NavLink:active {
+    color: steelblue;
+    font-weight: bold;
+}
+
+NavLink:visited {
+    color: steelblue;
+}
+
+body {
+    background-color: lightgray;
 }

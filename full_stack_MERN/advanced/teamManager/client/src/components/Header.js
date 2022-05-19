@@ -1,9 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "../components/Header.module.css";
 
 const Header = () => {
     return (
-        <header>
+        <header className={styles.header}>
             <NavLink className="NavLink" to="/players/list">
                 Manage Players
             </NavLink>

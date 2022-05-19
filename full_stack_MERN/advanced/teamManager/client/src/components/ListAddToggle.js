@@ -1,9 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "../components/ListAddToggle.module.css";
 
-const ListAddToggle = () => {
+const ListAddToggle = (props) => {
+    const { children } = props;
+
     return (
-        <div className="toggleBox">
+        <div className={styles.toggleBox}>
             <NavLink className="NavLink" to="/players/list">
                 List
             </NavLink>
@@ -11,6 +14,7 @@ const ListAddToggle = () => {
             <NavLink className="NavLink" to="/players/addplayer">
                 Add Player
             </NavLink>
+            <div>{children}</div>
         </div>
     );
 };

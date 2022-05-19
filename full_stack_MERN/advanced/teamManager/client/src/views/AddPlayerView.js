@@ -11,9 +11,9 @@ const AddPlayerView = () => {
 
     return (
         <div>
-            <h2>Add Player View</h2>
-            <ListAddToggle />
-            <AddPlayer player={players} setPlayers={setPlayers} />
+            <ListAddToggle>
+                <AddPlayer players={players} setPlayers={setPlayers} />
+            </ListAddToggle>
         </div>
     );
 };

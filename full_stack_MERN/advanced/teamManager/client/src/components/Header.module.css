@@ -1,0 +1,15 @@
+.header {
+    margin: 0 3rem 2rem 2rem;
+    padding: 1rem 1rem 0 0;
+    font-size: 130%;
+    color: steelblue;
+}
+
+a:active {
+    color: steelblue;
+    font-weight: bold;
+}
+
+a:visited {
+    color: steelblue;
+}
