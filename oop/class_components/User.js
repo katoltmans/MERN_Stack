@@ -1,20 +1,63 @@
+class BankAccount {
+    constructor(balance, intRate) {
+        this.balance = typeof balance !== "undefined" ? balance : 0;
+        this.intRate = typeof intRate !== "undefined" ? intRate : 0.03;
+    }
+
+    // Method to deposit money to an account
+    deposit(amount) {
+        this.balance += amount;
+        return this;
+    }
+
+    // Method to withdraw money from an account
+    withdraw(amount) {
+        if (this.balance - amount > 0) {
+            this.balance -= amount;
+        } else {
+            console.log("Insufficient funds: Charging a $5 fee");
+            this.balance -= 5;
+        }
+        return this;
+    }
+
+    displayAccountInfo() {
+        return this.balance.toFixed(2);
+    }
+
+    yieldInterest() {
+        if (this.balance > 0) {
+            this.balance += this.balance * this.intRate;
+        } else {
+            this.balance += 0;
+            console.log("Insufficient funds - no interest accrued");
+        }
+        return this;
+    }
+}
+
 class User {
     constructor(username, emailAddress) {
         //method has 2 parameters: name & username
         this.name = username; //values passed in will set the name and email
         this.email = emailAddress;
-        this.accountBalance = 0; //Account balance defaults to 0 and is not needed as a parameter
+        this.account = new BankAccount(0, 0.02);
+        //this.accountBalance = 0; //Account balance defaults to 0 and is not needed as a parameter
     }
 
     // Method for making deposits
     makeDeposit(amount) {
-        this.accountBalance += amount;
+        this.account.deposit(amount);
+        console.log("Account balance after deposit: " + this.account.balance);
         return this;
     }
 
     // Method for making withdrawals
     makeWithdrawal(amount) {
-        this.accountBalance -= amount;
+        this.account.withdraw(amount);
+        console.log(
+            "Account balance after withdrawal: " + this.account.balance
+        );
         return this;
     }
 
@@ -24,7 +67,7 @@ class User {
             "User: " +
                 this.name +
                 ", Balance: $" +
-                this.accountBalance.toFixed(2)
+                this.account.displayAccountInfo()
         );
         return this;
     }
@@ -36,11 +79,11 @@ class User {
         console.log(
             this.name +
                 "'s Balance: $" +
-                this.accountBalance +
+                this.account.displayAccountInfo() +
                 ", " +
                 receiver.name +
                 "'s Balance: $" +
-                receiver.accountBalance
+                receiver.account.displayAccountInfo()
         );
         return this;
     }
