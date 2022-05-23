@@ -27,5 +27,27 @@ class Ninja {
     }
 }
 
+class Sensei extends Ninja {
+    constructor(name) {
+        super(name, 200, 10, 10);
+        this.wisdom = 10;
+    }
+
+    speakWisdom() {
+        super.drinkSake();
+        console.log(
+            "Programming isn't about what you know; it's about what you can figure out."
+        );
+        return this;
+    }
+}
+
 const ninja1 = new Ninja("Hyabusa", 100);
 ninja1.sayName().showStats().drinkSake().showStats();
+
+console.log();
+
+const superSensei = new Sensei("Master Splinter");
+superSensei.showStats();
+superSensei.speakWisdom();
+superSensei.showStats();
